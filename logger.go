@@ -1,10 +1,9 @@
 package logger
 
 import (
-	"github.com/putchi/utils"
-
 	"encoding/json"
 	"fmt"
+	utils "github.com/putchi/go-lib-utils"
 	"log"
 	"net/http"
 	"reflect"
