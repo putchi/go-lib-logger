@@ -3,7 +3,7 @@ package logger
 import (
 	"bytes"
 	"fmt"
-	"github.com/putchi/utils"
+	utils "github.com/putchi/go-lib-utils"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"os"
