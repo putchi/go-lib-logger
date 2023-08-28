@@ -1,4 +1,4 @@
-module github.com/putchi/logger
+module github.com/putchi/go-lib-logger
 
 go 1.20
 
