@@ -3,7 +3,7 @@ module github.com/putchi/go-lib-logger
 go 1.20
 
 require (
-	github.com/putchi/go-lib-utils v1.0.2
+	github.com/putchi/go-lib-utils v1.0.3
 	github.com/stretchr/testify v1.8.2
 )
 

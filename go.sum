@@ -15,8 +15,8 @@ github.com/mattn/go-isatty v0.0.14 h1:yVuAays6BHfxijgZPzw+3Zlu5yQgKGP2/hcQbHb7S9
 github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/putchi/go-lib-utils v1.0.2 h1:g5TRi4Q4at9YqNJhHSu1WrzeWMTZfmdWo6VenPqD+XY=
-github.com/putchi/go-lib-utils v1.0.2/go.mod h1:U8fut1VB96/MjuyKoodDoOdjse9C/ftNdHl7ZmFLfx0=
+github.com/putchi/go-lib-utils v1.0.3 h1:T08xEQF4PikaKmsy3XFK88PnbB0LmjGdJDdbvIAB7Iw=
+github.com/putchi/go-lib-utils v1.0.3/go.mod h1:U8fut1VB96/MjuyKoodDoOdjse9C/ftNdHl7ZmFLfx0=
 github.com/scim2/filter-parser/v2 v2.2.0 h1:QGadEcsmypxg8gYChRSM2j1edLyE/2j72j+hdmI4BJM=
 github.com/scim2/filter-parser/v2 v2.2.0/go.mod h1:jWnkDToqX/Y0ugz0P5VvpVEUKcWcyHHj+X+je9ce5JA=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
