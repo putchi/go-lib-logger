@@ -446,7 +446,7 @@ func Test_first6Last4MaskFunc(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := first6Last4MaskFunc(tt.args.str); got != tt.want {
+			if got := First6Last4MaskFunc(tt.args.str); got != tt.want {
 				t.Errorf("first6Last4MaskFunc() = %v, want %v", got, tt.want)
 			}
 		})
@@ -480,7 +480,7 @@ func Test_last4MaskFunc(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := last4MaskFunc(tt.args.str); got != tt.want {
+			if got := Last4MaskFunc(tt.args.str); got != tt.want {
 				t.Errorf("last4MaskFunc() = %v, want %v", got, tt.want)
 			}
 		})
@@ -514,7 +514,7 @@ func Test_first6MaskFunc(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := first6MaskFunc(tt.args.str); got != tt.want {
+			if got := First6MaskFunc(tt.args.str); got != tt.want {
 				t.Errorf("first6MaskFunc() = %v, want %v", got, tt.want)
 			}
 		})
