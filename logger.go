@@ -308,7 +308,7 @@ func logItNow(level string, requestId string, format *string, a ...interface{}) 
 			msg = fmt.Sprint(redacted...)
 		} else {
 			msg = fmt.Sprintf(*format, redacted...)
-		}
+		}it
 
 		var finalLogFormat = logFormat
 		if level == INFO {
