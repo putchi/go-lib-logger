@@ -31,8 +31,6 @@ const (
 	WARN = "WARN"
 	// ERROR Log level
 	ERROR = "ERROR"
-	// NOSUMO level
-	NOSUMO = "NOSUMO"
 	// format to log
 	logFormat = "%[1]s [%[2]s] [%[3]s] (%[5]s) %[4]s"
 	// format to log info
@@ -53,28 +51,28 @@ const (
 	SystemInfo = "System_Info"
 )
 
-func first6MaskFunc(str string) string {
+func First6MaskFunc(str string) string {
 	if len(str) <= 6 {
 		return strings.Repeat("*", len(str))
 	}
 	return str[:6] + strings.Repeat("*", len(str)-6)
 }
 
-func last4MaskFunc(str string) string {
+func Last4MaskFunc(str string) string {
 	if len(str) <= 4 {
 		return strings.Repeat("*", len(str))
 	}
 	return strings.Repeat("*", len(str)-4) + str[len(str)-4:]
 }
 
-func first6Last4MaskFunc(str string) string {
+func First6Last4MaskFunc(str string) string {
 	if len(str) <= 10 {
 		return strings.Repeat("*", len(str))
 	}
 	return str[:6] + strings.Repeat("*", len(str)-10) + str[len(str)-4:]
 }
 
-func completeMaskFunc(str string) string {
+func CompleteMaskFunc(str string) string {
 	return strings.Repeat("*", len(str))
 }
 
@@ -169,13 +167,13 @@ func redactGetTagValue(i int, value reflect.Value, ptr reflect.Value) string {
 
 	switch tag {
 	case MaskTypeFirst6:
-		newValue = first6MaskFunc(ptr.String())
+		newValue = First6MaskFunc(ptr.String())
 	case MaskTypeLast4:
-		newValue = last4MaskFunc(ptr.String())
+		newValue = Last4MaskFunc(ptr.String())
 	case MaskTypeFirst6Last4:
-		newValue = first6Last4MaskFunc(ptr.String())
+		newValue = First6Last4MaskFunc(ptr.String())
 	case MaskTypeComplete:
-		newValue = completeMaskFunc(ptr.String())
+		newValue = CompleteMaskFunc(ptr.String())
 	default:
 		newValue = ptr.String()
 	}
@@ -293,10 +291,9 @@ func Fatal(requestId string, a ...interface{}) {
 //}
 
 func logItNow(level string, requestId string, format *string, a ...interface{}) {
-	var msg string
-	src := src()
 	if ValidateAgainstConfiguredLogLevel(level) {
-		//src := src()
+		var msg string
+		src := src()
 		now := now()
 
 		if len(requestId) == 0 {
@@ -304,14 +301,14 @@ func logItNow(level string, requestId string, format *string, a ...interface{}) 
 		}
 		var redacted = make([]interface{}, len(a))
 		for idx, item := range a {
-			redacted[idx] = utils.JsonIt(Sanitizer(item))
+			redacted[idx] = Sanitizer(item)
 		}
 
 		if format == nil {
 			msg = fmt.Sprint(redacted...)
 		} else {
 			msg = fmt.Sprintf(*format, redacted...)
-		}
+		}it
 
 		var finalLogFormat = logFormat
 		if level == INFO {
@@ -385,18 +382,21 @@ func ValidateAgainstConfiguredLogLevel(level string) bool {
 }
 
 func HttpLogger(inner http.Handler, name string) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
+	return http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
 
-		inner.ServeHTTP(w, r)
+			inner.ServeHTTP(w, r)
 
-		Info(
-			r.Context().Value("__request_id__").(string),
-			map[string]interface{}{
-				"method":     r.Method,
-				"path":       r.RequestURI,
-				"route_name": name,
-				"time_taken": fmt.Sprint(time.Since(start)),
-			})
-	})
+			Info(
+				r.Context().Value("__request_id__").(string),
+				map[string]interface{}{
+					"method":     r.Method,
+					"path":       r.RequestURI,
+					"route_name": name,
+					"time_taken": fmt.Sprint(time.Since(start)),
+				},
+			)
+		},
+	)
 }
